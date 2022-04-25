@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Create a New Blog</title>
+<th:block th:replace="/fragments/head"/>
+</head>
+<body>
+	<div th:replace="/fragments/navbar::navbarx"></div>
+	<div class="container">
+		<h1>Edit Blog Post</h1>
+		<!--  if you surround a url with @{} in thymeleaf, you let thymeleaf rewrite the url -->
+		<form th:action="@{/blogposts/update/{id}(id=${blogPost.id})}" th:object="${blogPost}"
+			method="post">
+			<div class="form-group">
+					<input type="text" class ="form-control" th:field="*{title}" 
+							placeholder="Blog Title..."/>
+				</div>
+				<div class="form-group">
+					<input type="text" class="form-control" th:field="*{author}" placeholder ="Your Name..."/>
+				</div>
+				<div class="form-group">
+					<input type="text" class="form-control" th:field="*{blogEntry}" placeholder ="Blog Entry.."/>
+				</div>
+					<button class="btn btn-primary">Submit Your Edits</button>
+			
+		</form>
+	</div>
+	<th:block th:replace="/fragments/endbody"/>
+</body>
+</html>
